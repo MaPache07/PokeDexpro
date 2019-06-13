@@ -7,13 +7,14 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 const val POKE_DB = "https://pokeapi.co/api/v2/pokemon/"
 
 interface PokeService {
 
     @GET("/")
-    fun getPoke() : Deferred<Response<PokeApi>>
+    fun getPoke(@Query("offset")number: String, @Query("limit")limit:String) : Deferred<Response<PokeApi>>
 
     companion object{
         fun getInstance() : PokeService {
